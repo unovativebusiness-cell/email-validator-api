@@ -20,3 +20,4 @@ env27/
 .idea/
 .coverage
 htmlcov/
+.github/
