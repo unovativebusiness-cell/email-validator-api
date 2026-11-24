@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: email-validator-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -e . -r api/requirements.txt
+    startCommand: python api/run.py
+    healthCheckPath: /health
+    envVars:
+      - key: EMAIL_API_SECRET
+        sync: false
+      - key: CHECK_DELIVERABILITY
+        value: "true"
+      - key: MAX_EMAILS
+        value: "500"
+      - key: HOST
+        value: "0.0.0.0"
+      - key: PYTHON_VERSION
+        value: "3.12.7"
